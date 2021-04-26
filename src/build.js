@@ -4,7 +4,7 @@ import mkdirp from 'mkdirp';
 import path from 'path';
 import pascalCase from 'pascal-case';
 import prettier from 'prettier';
-import prettierConfig from './prettier.config.cjs';
+import prettierConfig from '../prettier.config.cjs';
 
 const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 const { components, version } = JSON.parse(
