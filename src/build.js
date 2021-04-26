@@ -13,7 +13,7 @@ const { components, version } = JSON.parse(
 
 // Sync the Shoelace version in package.json with the installed version
 packageJson.peerDependencies['@shoelace-style/shoelace'] = version;
-fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2), 'utf8');
+fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2) + '\n', 'utf8');
 
 del.sync('./dist');
 mkdirp.sync('./dist');
