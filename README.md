@@ -54,13 +54,13 @@ Since dependencies are just components, you can load them the same way.
 
 ```jsx
 import SlButton from '@shoelace-style/react/dist/button';
-import SlSpinner '@shoelace-style/react/dist/spinner';
+import SlSpinner from '@shoelace-style/react/dist/spinner';
 ```
 
 However, this may cause your linter to complain (e.g. "SlButton is defined but never used"). If you're not going to use the dependent components in your JSX, you can import them as side effects instead.
 
 ```jsx
-import from '@shoelace-style/react/dist/button';
+import '@shoelace-style/react/dist/button';
 import '@shoelace-style/react/dist/spinner';
 ```
 
