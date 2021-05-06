@@ -15,13 +15,13 @@ const { components, version } = JSON.parse(
 packageJson.peerDependencies['@shoelace-style/shoelace'] = version;
 fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2) + '\n', 'utf8');
 
-del.sync('./dist');
-mkdirp.sync('./dist');
+del.sync(['./dist', './src']);
+mkdirp.sync('./src');
 
 components.map(component => {
   const tagWithoutPrefix = component.tag.replace(/^sl-/, '');
-  const componentDir = path.join('./dist', tagWithoutPrefix);
-  const componentFile = path.join(componentDir, 'index.js');
+  const componentDir = path.join('./src', tagWithoutPrefix);
+  const componentFile = path.join(componentDir, 'index.ts');
 
   mkdirp.sync(componentDir);
 
@@ -35,7 +35,7 @@ components.map(component => {
     `
       import * as React from 'react';
       import { createComponent } from '@lit-labs/react';
-      import Component from '@shoelace-style/shoelace/dist/components/${tagWithoutPrefix}/${tagWithoutPrefix}.js';
+      import Component from '@shoelace-style/shoelace/dist/components/${tagWithoutPrefix}/${tagWithoutPrefix}';
 
       export default createComponent(
         React,

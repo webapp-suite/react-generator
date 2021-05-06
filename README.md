@@ -46,7 +46,7 @@ Events will work as expected using the `onSlEventName` convention.
 </SlButton>
 ```
 
-## Dependencies
+### Dependencies
 
 Some components depend on other components internally. For example, `<sl-button>` requires you to load `<sl-spinner>` because it's used internally for its loading state. If a component has dependencies, they'll be listed in the "Dependencies" section of its documentation. These are always Shoelace components, not third-party libraries. 
 
@@ -66,10 +66,22 @@ import '@shoelace-style/react/dist/spinner';
 
 This extra step is required for dependencies to ensure they get registered with the browser as custom elements.
 
-## Themes, Utilities, and Assets
+### Themes, Utilities, and Assets
 
 Themes, utilities, and any other assets should be loaded directly from the `@shoelace-style/shoelace` package. This package only provides components wrapped for use with React.
 
+For a full list of components and their APIs, refer to the [Shoelace documentation](https://shoelace.style/).
+
 ---
 
-For a full list of components and their APIs, refer to the [Shoelace documentation](https://shoelace.style/).
+## Developers
+
+The heart of this package is in `scripts/build.js`, which loops through each component in [`@shoelace-style/shoelace`](https://www.npmjs.com/package/@shoelace-style/shoelace) and creates a set of React-wrapped components via [`@lit-labs/react`](https://www.npmjs.com/package/@lit-labs/react). The wrapped components are written to the `src` directory. As such, you should never modify anything in `src`.
+
+After the wrapped components are generated, the build runs `tsc` on the `src` directory to produce a distribution in `dist`. This is what gets published to npm and is what end users will consume.
+
+To build the project locally, use:
+
+```bash
+npm run build
+```
