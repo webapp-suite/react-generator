@@ -14,6 +14,7 @@ mkdirp.sync('./src');
 
 // Update to the latest version of Shoelace
 const version = execSync('npm show @shoelace-style/shoelace version').toString().trim();
+console.log(chalk.yellow(`Updating Shoelace to the latest version (${version})`));
 execSync(`npm i --no-save @shoelace-style/shoelace@${version}`, { stdio: 'inherit' });
 
 // Sync the Shoelace version in package.json
@@ -63,3 +64,5 @@ components.map(component => {
 
   fs.writeFileSync(componentFile, source, 'utf8');
 });
+
+console.log(chalk.cyan(`Shoelace ${version} components have been wrapped for React! 📦\n`));
