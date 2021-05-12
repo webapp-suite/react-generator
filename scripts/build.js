@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import fs from 'fs';
 import del from 'del';
 import mkdirp from 'mkdirp';
@@ -5,19 +6,28 @@ import path from 'path';
 import pascalCase from 'pascal-case';
 import prettier from 'prettier';
 import prettierConfig from '../prettier.config.cjs';
+import { execSync } from 'child_process';
 
-const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
-const { components, version } = JSON.parse(
-  fs.readFileSync('./node_modules/@shoelace-style/shoelace/dist/metadata.json', 'utf8')
-);
-
-// Sync the Shoelace version in package.json with the installed version
-packageJson.peerDependencies['@shoelace-style/shoelace'] = version;
-fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2) + '\n', 'utf8');
-
+// Clear target directories
 del.sync(['./dist', './src']);
 mkdirp.sync('./src');
 
+// Update to the latest version of Shoelace
+const version = execSync('npm show @shoelace-style/shoelace version').toString().trim();
+execSync(`npm i --no-save @shoelace-style/shoelace@${version}`, { stdio: 'inherit' });
+
+// Sync the Shoelace version in package.json
+const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+packageJson.version = version;
+packageJson.peerDependencies['@shoelace-style/shoelace'] = version;
+fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2) + '\n', 'utf8');
+
+// Fetch component metadata
+const { components } = JSON.parse(
+  fs.readFileSync('./node_modules/@shoelace-style/shoelace/dist/metadata.json', 'utf8')
+);
+
+// Wrap components
 components.map(component => {
   const tagWithoutPrefix = component.tag.replace(/^sl-/, '');
   const componentDir = path.join('./src', tagWithoutPrefix);
