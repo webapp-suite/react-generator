@@ -4,13 +4,13 @@ This package provides all [Shoelace.style](https://shoelace.style/) components w
 
 ## Installation
 
-Install Shoelace along with this module in your React app.
+Install this module in your React app.
 
 ```bash
 npm i @shoelace-style/react
 ```
 
-Note: if you are using npm version 3, 4, 5, or 6, you will also need to install peer dependencies.
+Note: if you are using npm version 3, 4, 5, or 6, you will also need to install Shoelace and React, as both are peer dependencies.
 
 ```bash
 # only required for npm versions 3-6
@@ -57,14 +57,14 @@ import SlButton from '@shoelace-style/react/dist/button';
 import SlSpinner from '@shoelace-style/react/dist/spinner';
 ```
 
-However, this may cause your linter to complain (e.g. "SlButton is defined but never used"). If you're not going to use the dependent components in your JSX, you can import them as side effects instead.
+However, this may cause your linter to complain (e.g. `SlSpinner is defined but never used`). If you're not going to use the dependent components in your JSX, you can import them as side effects instead.
 
 ```jsx
 import '@shoelace-style/react/dist/button';
 import '@shoelace-style/react/dist/spinner';
 ```
 
-This extra step is required for dependencies to ensure they get registered with the browser as custom elements.
+This extra step is required to ensure dependencies get registered as custom elements in the browser.
 
 ### Themes, Utilities, and Assets
 
