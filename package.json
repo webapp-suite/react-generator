@@ -8,8 +8,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "node ./scripts/build.js && tsc",
-    "update-package-json": "git commit -m \"update versions\" package.json",
+    "build": "node ./scripts/build.js && npm run commit-package-changes && tsc",
+    "commit-package-changes": "git commit -m \"update versions\" package.json",
     "prepublishOnly": "npm run build"
   },
   "repository": {
