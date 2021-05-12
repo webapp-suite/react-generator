@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "node ./scripts/build.js && npm run commit-package-changes && tsc",
-    "commit-package-changes": "git commit -m \"update versions\" package.json",
+    "commit-package-changes": "(git commit -m \"update versions\" package.json) || true",
     "prepublishOnly": "npm run build"
   },
   "repository": {
