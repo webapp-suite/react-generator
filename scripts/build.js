@@ -58,7 +58,7 @@ components.map(component => {
       );
     `,
     Object.assign(prettierConfig, {
-      parser: 'babel'
+      parser: 'babel-ts'
     })
   );
 
