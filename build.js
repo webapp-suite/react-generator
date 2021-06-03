@@ -1,4 +1,3 @@
-#! /usr/bin/env node
 import chalk from 'chalk';
 import commandLineArgs from 'command-line-args';
 import fs from 'fs';
