@@ -2,6 +2,7 @@
   "name": "@shoelace-style/react-generator",
   "version": "0.0.8",
   "description": "A script to generate and publish the @shoelace-style/react package.",
+  "private": true,
   "type": "module",
   "repository": {
     "type": "git",
