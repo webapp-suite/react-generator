@@ -1,11 +1,9 @@
 {
   "name": "@shoelace-style/react-generator",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A script to generate and publish the @shoelace-style/react package.",
   "type": "module",
-  "bin": {
-    "shoelace-react-generator": "build.js"
-  },
+  "bin": "build.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shoelace-style/react-generator.git"
