@@ -1,0 +1,31 @@
+{
+  "name": "@shoelace-style/react",
+  "version": "%VERSION%",
+  "description": "Shoelace web components wrapped up for React.",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "shoelace",
+    "web components",
+    "react"
+  ],
+  "author": "Cory LaViska",
+  "license": "MIT",
+  "homepage": "https://shoelace.style/",
+  "bugs": {
+    "url": "https://github.com/shoelace-style/react-generator/issues"
+  },
+  "devDependencies": {
+    "@types/react": "*",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "@lit-labs/react": "*"
+  },
+  "peerDependencies": {
+    "@shoelace-style/shoelace": "%VERSION%",
+    "react": "*"
+  }
+}
