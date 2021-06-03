@@ -1,6 +1,6 @@
 {
   "name": "@shoelace-style/react-generator",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A script to generate and publish the @shoelace-style/react package.",
   "type": "module",
   "bin": "./build.js",
