@@ -42,20 +42,44 @@ console.log('Installing dependencies...\n');
 execSync('npm i', { stdio: 'inherit' });
 
 // Fetch component metadata
-const { components } = JSON.parse(
-  fs.readFileSync('./node_modules/@shoelace-style/shoelace/dist/metadata.json', 'utf8')
+const metadata = JSON.parse(
+  fs.readFileSync('./node_modules/@shoelace-style/shoelace/dist/custom-elements.json', 'utf8')
 );
 
 // Wrap components
 console.log('Wrapping components...\n');
+
+function getAllComponents() {
+  const allComponents = [];
+
+  metadata.modules.map(module => {
+    module.exports.find(ex => {
+      if (ex.kind === 'custom-element-definition') {
+        const tagName = ex.name;
+        const className = ex.declaration.name;
+        const component = Object.assign(
+          { className, tagName },
+          module?.declarations.find(dec => dec.name === 'default')
+        );
+
+        allComponents.push(component);
+      }
+    });
+  });
+
+  return allComponents;
+}
+
+const components = getAllComponents();
+
 components.map(component => {
-  const tagWithoutPrefix = component.tag.replace(/^sl-/, '');
+  const tagWithoutPrefix = component.tagName.replace(/^sl-/, '');
   const componentDir = path.join('./src', tagWithoutPrefix);
   const componentFile = path.join(componentDir, 'index.ts');
 
   mkdirp.sync(componentDir);
 
-  const events = component.events
+  const events = (component.events || [])
     .map(event => {
       return `${`on${pascalCase.pascalCase(event.name)}`}: '${event.name}'`;
     })
@@ -69,7 +93,7 @@ components.map(component => {
 
       export default createComponent(
         React,
-        '${component.tag}',
+        '${component.tagName}',
         Component,
         {
           ${events}
