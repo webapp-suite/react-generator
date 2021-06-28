@@ -53,16 +53,15 @@ function getAllComponents() {
   const allComponents = [];
 
   metadata.modules.map(module => {
-    module.exports.find(ex => {
+    module.exports.map(ex => {
       if (ex.kind === 'custom-element-definition') {
         const tagName = ex.name;
         const className = ex.declaration.name;
-        const component = Object.assign(
-          { className, tagName },
-          module?.declarations.find(dec => dec.name === 'default')
-        );
+        const component = module?.declarations.find(dec => dec.name === 'default');
 
-        allComponents.push(component);
+        if (component) {
+          allComponents.push(Object.assign(component, { className, tagName }));
+        }
       }
     });
   });
