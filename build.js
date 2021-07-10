@@ -47,7 +47,7 @@ const metadata = JSON.parse(
 );
 
 // Wrap components
-console.log('Wrapping components...\n');
+console.log('Wrapping components...');
 
 function getAllComponents() {
   const allComponents = [];
@@ -57,7 +57,7 @@ function getAllComponents() {
       if (ex.kind === 'custom-element-definition') {
         const tagName = ex.name;
         const className = ex.declaration.name;
-        const component = module?.declarations.find(dec => dec.name === 'default');
+        const component = module?.declarations.find(dec => dec.name === className);
 
         if (component) {
           allComponents.push(Object.assign(component, { className, tagName }));
@@ -105,6 +105,7 @@ components.map(component => {
   );
 
   fs.writeFileSync(componentFile, source, 'utf8');
+  console.log(`✓ <${component.tagName}>`);
 });
 
 // Run TypeScript on the generated src directory
