@@ -19,7 +19,7 @@ if (!version) {
   process.exit(1);
 }
 
-console.log(chalk.cyan(`Preparing to wrap React components for Shoelace ${version}\n`));
+console.log(chalk.cyan(`Preparing to generate React components for Shoelace ${version}\n`));
 if (publish) {
   console.log(chalk.yellow('The --publish flag was used so the package will be published to npm after building!\n'));
 }
@@ -53,15 +53,13 @@ function getAllComponents() {
   const allComponents = [];
 
   metadata.modules.map(module => {
-    module.exports.map(ex => {
-      if (ex.kind === 'custom-element-definition') {
-        const tagName = ex.name;
-        const className = ex.declaration.name;
+    module.declarations?.map(declaration => {
+      if (declaration.customElement) {
+        const component = declaration;
         const modulePath = module.path;
-        const component = module?.declarations.find(dec => dec.name === className);
 
         if (component) {
-          allComponents.push(Object.assign(component, { className, tagName, modulePath }));
+          allComponents.push(Object.assign(component, { modulePath }));
         }
       }
     });
