@@ -57,10 +57,11 @@ function getAllComponents() {
       if (ex.kind === 'custom-element-definition') {
         const tagName = ex.name;
         const className = ex.declaration.name;
+        const modulePath = module.path;
         const component = module?.declarations.find(dec => dec.name === className);
 
         if (component) {
-          allComponents.push(Object.assign(component, { className, tagName }));
+          allComponents.push(Object.assign(component, { className, tagName, modulePath }));
         }
       }
     });
@@ -75,6 +76,7 @@ components.map(component => {
   const tagWithoutPrefix = component.tagName.replace(/^sl-/, '');
   const componentDir = path.join('./src', tagWithoutPrefix);
   const componentFile = path.join(componentDir, 'index.ts');
+  const importPath = component.modulePath.replace(/^src\//, '').replace(/\.ts$/, '');
 
   mkdirp.sync(componentDir);
 
@@ -88,7 +90,7 @@ components.map(component => {
     `
       import * as React from 'react';
       import { createComponent } from '@lit-labs/react';
-      import Component from '@shoelace-style/shoelace/dist/components/${tagWithoutPrefix}/${tagWithoutPrefix}';
+      import Component from '@shoelace-style/shoelace/dist/${importPath}';
 
       export default createComponent(
         React,
