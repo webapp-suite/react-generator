@@ -1,5 +1,5 @@
 {
-  "name": "@shoelace-style/react",
+  "name": "@webapp-suite/shoelace-react",
   "version": "%VERSION%",
   "description": "Shoelace web components wrapped up for React.",
   "type": "module",
@@ -11,11 +11,10 @@
     "web components",
     "react"
   ],
-  "author": "Cory LaViska",
   "license": "MIT",
   "homepage": "https://shoelace.style/",
   "bugs": {
-    "url": "https://github.com/shoelace-style/react-generator/issues"
+    "url": "https://github.com/webapp-suite/react-generator/issues"
   },
   "devDependencies": {
     "@types/react": "*",

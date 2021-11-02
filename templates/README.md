@@ -7,7 +7,7 @@ This package provides all [Shoelace.style](https://shoelace.style/) components w
 Install this module in your React app.
 
 ```bash
-npm i @shoelace-style/react
+npm i @webapp-suite/shoelace-react
 ```
 
 Note: if you are using npm version 3, 4, 5, or 6, you will also need to install Shoelace and React, as both are peer dependencies.
@@ -24,7 +24,7 @@ Include the base theme and any components you want to use in your app. Now you c
 ```jsx
 import '@shoelace-style/shoelace/dist/themes/base.css';
 
-import SlButton from '@shoelace-style/react/dist/button';
+import SlButton from '@webapp-suite/shoelace-react/dist/button';
 
 // ...
 

@@ -42,9 +42,7 @@ console.log('Installing dependencies...\n');
 execSync('npm i', { stdio: 'inherit' });
 
 // Fetch component metadata
-const metadata = JSON.parse(
-  fs.readFileSync('./node_modules/@shoelace-style/shoelace/dist/custom-elements.json', 'utf8')
-);
+const metadata = JSON.parse(fs.readFileSync('./node_modules/@webapp-suite/shoelace/dist/custom-elements.json', 'utf8'));
 
 // Wrap components
 console.log('Wrapping components...');
@@ -88,7 +86,7 @@ components.map(component => {
     `
       import * as React from 'react';
       import { createComponent } from '@lit-labs/react';
-      import Component from '@shoelace-style/shoelace/dist/${importPath}';
+      import Component from '@webapp-suite/shoelace/dist/${importPath}';
 
       export default createComponent(
         React,
