@@ -69,6 +69,7 @@ function getAllComponents() {
 }
 
 const components = getAllComponents();
+const index = [];
 
 components.map(component => {
   const tagWithoutPrefix = component.tagName.replace(/^sl-/, '');
@@ -104,9 +105,14 @@ components.map(component => {
     })
   );
 
+  index.push(`export { default as ${component.name} } from './${tagWithoutPrefix}';`);
+
   fs.writeFileSync(componentFile, source, 'utf8');
   console.log(`✓ <${component.tagName}>`);
 });
+
+// Generate the index file
+fs.writeFileSync('./src/index.ts', index.join('\n'), 'utf8');
 
 // Run TypeScript on the generated src directory
 console.log('Source files have been generated. Running the TypeScript compiler...');
