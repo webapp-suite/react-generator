@@ -24,7 +24,7 @@
     "@lit-labs/react": "^1.0.0"
   },
   "peerDependencies": {
-    "@shoelace-style/shoelace": "%VERSION%",
+    "@webapp-suite/shoelace": "%VERSION%",
     "react": "*"
   }
 }

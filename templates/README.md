@@ -14,7 +14,7 @@ Note: if you are using npm version 3, 4, 5, or 6, you will also need to install 
 
 ```bash
 # only required for npm versions 3-6
-npm i react @shoelace-style/shoelace
+npm i react @webapp-suite/shoelace
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ npm i react @shoelace-style/shoelace
 Include the base theme and any components you want to use in your app. Now you can use Shoelace components like regular React components!
 
 ```jsx
-import '@shoelace-style/shoelace/dist/themes/base.css';
+import '@webapp-suite/shoelace/dist/themes/base.css';
 
 import SlButton from '@webapp-suite/shoelace-react/dist/button';
 
@@ -47,6 +47,6 @@ Events will work as expected using the `onSlEventName` convention. For example, 
 
 ### Themes, Utilities, and Assets
 
-Themes, utilities, and any other assets should be loaded directly from the `@shoelace-style/shoelace` package. This package only provides components wrapped for use with React.
+Themes, utilities, and any other assets should be loaded directly from the `@webapp-suite/shoelace` package. This package only provides components wrapped for use with React.
 
 For a full list of components and their APIs, refer to the [Shoelace documentation](https://shoelace.style/).
