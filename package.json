@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/webapp-suite/react-generator#readme",
   "dependencies": {
-    "@webapp-suite/shoelace": "^2.0.2-beta.58",
     "chalk": "^4.1.1",
     "command-line-args": "^5.1.1",
     "del": "^6.0.0",
